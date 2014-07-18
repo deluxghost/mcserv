@@ -2,7 +2,7 @@
 M_OLDPWD=$OLDPWD
 M_PWD=$PWD
 DIR='<YOUR MINECRAFT DIR HERE, NO "/">'
-LOGDIR=$DIR/logs/launcher.log
+LOGDIR=$DIR/srvlog/launcher.log
 cd "$DIR"
 echo "$(date)[Info]Launching.">>$LOGDIR
 MCSTAT=0
@@ -15,7 +15,7 @@ while [[ "$?" != "0" ]]; do
         echo "$(date)[Warn]Crashed. Restart Server.">>$LOGDIR
         sleep 10
     fi
-    java -Xmx880M -Xms32M -jar $DIR/craftbukkit.jar
+    java -Xmx880M -Xms32M -server -Djava.awt.headless=true -XX:PermSize=255m -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:+UseStringCache -jar -Dfml.queryResult=confirm "$DIR/cauldron.jar"
 done
 echo "$(date)[Info]Exit.">>$LOGDIR
 cd "$M_PWD"
