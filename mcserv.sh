@@ -1,10 +1,9 @@
 #!/bin/bash
+DIR=$HOME/mc # Minecraft Directory. Plz Modify this line before running.
 M_OLDPWD=$OLDPWD
 M_PWD=$PWD
-# Modify the 3 lines first
-DIR=$HOME/mc # Minecraft Directory
-LOGDIR=$DIR/srvlog # Log Directory
-LOG=$LOGDIR/launcher.log # Log File
+LOGDIR=$DIR/srvlog
+LOG=$LOGDIR/launcher.log
 [[ -d "$LOGDIR" ]] || ( mkdir "$LOGDIR" ; echo "$(date)[Info]Created log directory.">>$LOG )
 cd "$DIR"
 echo "$(date)[Info]Launching.">>$LOG
